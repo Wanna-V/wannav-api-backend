@@ -1,0 +1,43 @@
+<html th:replace="~{fragment/layout.html :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<main>
+    <style>
+        @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+        .event{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .event img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .button-payment{
+            border: 0 solid;
+            border-radius: 5px;
+            background-color: #5AAB6F;
+            color: #ffffff;
+            margin-top: 20px;
+            width: 50%;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .button-payment:active{
+            background-color: #86ce99;
+            color: #ffffff;
+        }
+
+        .button-payment:focus {
+            color: #ffffff;
+            outline: none;
+        }
+    </style>
+
+    <div class="event">
+        <img src="/assets/images/event.png">
+        <button type="button" class="button-payment">쿠폰 받기</button>
+    </div>
+</main>
+</html>
