@@ -33,6 +33,6 @@ public class ReservationController {
     @GetMapping("/reservation")
     public String reservation() {
         log.info("예약 끝!");
-        return "success";
+        return "/payment/success";
     }
 }

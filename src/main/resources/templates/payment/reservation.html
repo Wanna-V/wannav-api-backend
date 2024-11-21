@@ -58,7 +58,7 @@
 </html>
 <script>
     const money = [[${reservationPaymentResponseDTO.penalty}]];
-    const restaurantName = "${reservationPaymentResponseDTO.restaurantName}";
+    const restaurantName = '[[@{${reservationPaymentResponseDTO.restaurantName}}]]';
 
     main();
 
@@ -95,11 +95,10 @@
             console.log(window.location.href);
 
             await widgets.requestPayment({
-                orderId: "5fBHBqMUG6aJ5niiCWMJ",
-                orderName: "restaurantName",
+                orderId: "2024111112345678",
+                orderName: restaurantName,
                 successUrl: window.location.origin + "/success",
                 failUrl: window.location.origin + "/fail",
-                // customerEmail: "customer123@gmail.com",
             });
         });
     }

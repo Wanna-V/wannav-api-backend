@@ -19,19 +19,19 @@ public class MyPageDTORepository {
     private final QUser user = QUser.user;
     private final QUserGradeLog userGradeLog = QUserGradeLog.userGradeLog;
 
-    public MyPageResponseDTO findMyPageById(Long userId) {
-        return queryFactory.select(Projections.fields(MyPageResponseDTO.class,
-                        user.username, user.point, userGradeLog.grade,
-                        QReview.review.id.countDistinct().intValue().as("reviewCount"),
-                        QUserCoupon.userCoupon.id.countDistinct().intValue().as("couponCount")))
-                .from(user)
-                .join(userGradeLog).on(userGradeLog.user.id.eq(user.id))
-                .leftJoin(QReview.review).on(QReview.review.user.id.eq(user.id))
-                .leftJoin(QUserCoupon.userCoupon).on(QUserCoupon.userCoupon.user.id.eq(user.id))
-                .where(user.id.eq(userId)
-                        .and(userGradeLog.createdAt.eq(
-                                JPAExpressions.select(userGradeLog.createdAt.max())
-                                        .from(userGradeLog)
-                                        .where(userGradeLog.user.id.eq(user.id))))).fetchFirst();
-    }
+//    public MyPageResponseDTO findMyPageById(Long userId) {
+//        return queryFactory.select(Projections.fields(MyPageResponseDTO.class,
+//                        user.username, user.point, userGradeLog.grade,
+//                        QReview.review.id.countDistinct().intValue().as("reviewCount"),
+//                        QUserCoupon.userCoupon.id.countDistinct().intValue().as("couponCount")))
+//                .from(user)
+//                .join(userGradeLog).on(userGradeLog.user.id.eq(user.id))
+//                .leftJoin(QReview.review).on(QReview.review.user.id.eq(user.id))
+//                .leftJoin(QUserCoupon.userCoupon).on(QUserCoupon.userCoupon.user.id.eq(user.id))
+//                .where(user.id.eq(userId)
+//                        .and(userGradeLog.createdAt.eq(
+//                                JPAExpressions.select(userGradeLog.createdAt.max())
+//                                        .from(userGradeLog)
+//                                        .where(userGradeLog.user.id.eq(user.id))))).fetchFirst();
+//    }
 }

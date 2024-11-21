@@ -23,6 +23,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     SELECT r1
     FROM Reservation r1
     LEFT JOIN r1.restaurant r2
+    LEFT JOIN r1.user u
     WHERE r1.id = :reservationId
     """)
     Reservation findByReservationId(Long reservationId);

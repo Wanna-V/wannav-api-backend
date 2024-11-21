@@ -18,12 +18,11 @@ import java.util.List;
 @Log4j2
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/payment")
 public class PaymentController {
 
     private final ReservationService reservationService;
 
-    @GetMapping("/reservation/{reservationId}")
+    @GetMapping("/payment/reservation/{reservationId}")
     public String reservationPayment(@PathVariable Long reservationId, Model model) {
         log.info("결제로왔다!");
 
@@ -36,7 +35,6 @@ public class PaymentController {
 
     @GetMapping("/success")
     public String reservationPaySuccess(
-
             @RequestParam(value = "orderId") String orderId,
             @RequestParam(value = "amount") Integer amount,
             @RequestParam(value = "paymentKey") String paymentKey) {
@@ -45,17 +43,16 @@ public class PaymentController {
         log.info(amount);
         log.info(paymentKey);
         log.info("성공~");
-        return "redirect:/success";
+        return "/payment/success";
     }
 
     @GetMapping("/fail")
     public String reservationPayFail(
-
             @RequestParam(value = "orderId") String orderId,
             @RequestParam(value = "amount") Integer amount,
             @RequestParam(value = "paymentKey") String paymentKey) {
 
         log.info("실패~");
-        return "redirect:/success";
+        return "/payment/success";
     }
 }

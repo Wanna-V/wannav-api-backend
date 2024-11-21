@@ -66,10 +66,4 @@ public class User {
     @Column(name="unregistered_at")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime unregisteredAt;
-
-//    @OneToMany(mappedBy = "user")
-//    private List<UserCoupon> userCoupons;
-//
-//    @OneToMany(mappedBy = "user")
-//    private List<Reservation> reservations;
 }

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/restaurant")
 public class RestaurantController {
 
-    @GetMapping()
+    @GetMapping("/")
     public String test1(Model model) {
         model.addAttribute("restaurantId",1);
         return "restaurant/reservation2";
