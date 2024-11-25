@@ -6,7 +6,6 @@ import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssg.wannavapibackend.common.BusinessStatus;
 import com.ssg.wannavapibackend.domain.Restaurant;
-import com.ssg.wannavapibackend.dto.RestaurantSearchCond;
 import jakarta.persistence.EntityManager;
 import java.util.List;
 import java.util.Optional;

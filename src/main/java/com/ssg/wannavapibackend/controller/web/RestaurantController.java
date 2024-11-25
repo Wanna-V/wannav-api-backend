@@ -5,7 +5,6 @@ import com.ssg.wannavapibackend.common.MoodType;
 import com.ssg.wannavapibackend.common.ProvideServiceType;
 import com.ssg.wannavapibackend.common.RestaurantType;
 import com.ssg.wannavapibackend.domain.Restaurant;
-import com.ssg.wannavapibackend.dto.RestaurantSearchCond;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
