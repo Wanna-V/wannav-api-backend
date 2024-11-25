@@ -57,410 +57,147 @@
                   <hr>
                 </div>
 
-                <div class="mb-8">
-                  <h5 class="mb-3">포함 음식</h5>
+
 
                   <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" id="eGrocery" checked>
-                    <label class="form-check-label" for="eGrocery">
-                      유제품
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" id="DealShare">
-                    <label class="form-check-label" for="DealShare">
-                      계란
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" id="Dmart">
-                    <label class="form-check-label" for="Dmart">
-                      동물의 알
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" id="Blinkit">
-                    <label class="form-check-label" for="Blinkit">
-                      생선
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" id="BigBasket">
-                    <label class="form-check-label" for="BigBasket">
-                      닭고기
-                    </label>
-                  </div>
-                </div>
+                <form th:object="${restaurantSearchCond}" th:action method="get">
 
+                  <div class="mb-8">
+                    <h5 class="mb-3">정렬 조건</h5>
 
-                <div class="mb-8">
-                  <h5 class="mb-3">위치</h5>
-                  <!-- form check -->
-
-                </div>
-
-
-
-                <div class="mb-8">
-                  <!-- price -->
-                  <h5 class="mb-3">평균 가격대</h5>
-                  <div>
-                    <!-- range -->
-                    <div id="priceRange" class="mb-3"></div>
-                    <small class="text-muted">평균 가격대:</small> <span id="priceRange-value" class="small"></span>
+                    <th:block class="form-check mb-2" th:each="sortCondition : ${sortConditions}">
+                      <input th:field="*{sortConditions}" class="btn-check" type="radio"  th:value="${sortCondition.key}">
+                      <label class="btn btn-outline-primary btn-sm" th:for="${#ids.prev('sortConditions')}" th:text="${sortCondition.value}"></label>
+                    </th:block>
 
                   </div>
-                </div>
-
-
-                <div class="mb-8">
-                  <h5 class="mb-3">영업 중 여부</h5>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" checked>
-                    <label class="form-check-label" for="eGrocery">
-                      영업 중
-                    </label>
-                  </div>
-                </div>
-
-                <div class="mb-8">
-                  <h5 class="mb-3">주차 가능 여부</h5>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      주차 가능
-                    </label>
-                  </div>
-                </div>
 
 
 
-                <div class="mb-8">
-                  <h5 class="mb-3">음식 종류</h5>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      한식
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      일식
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" checked>
-                    <label class="form-check-label" for="eGrocery">
-                      중식
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      양식
-                    </label>
-                  </div>
-                </div>
-
-
-
-                <div class="mb-8">
-                  <h5 class="mb-3">서비스</h5>
-
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      콜키지 가능
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="DealShare">
-                      글루텐프리 메뉴
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="Dmart">
-                      단체 이용 가능
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="Blinkit">
-                      무선 인터넷
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      포장
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      남녀 화장실 구분
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      배달
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      장애인 휠체어 이용 가능
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      출입구 휠체어 이용 가능
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      좌석 휠체어 이용 가능
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      유아의자 존재
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      반려동물 동반
-                    </label>
-                  </div>
-                </div>
-
-
-
-                <div class="mb-8">
-                  <h5 class="mb-3">분위기</h5>
-
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value=""  checked>
-                    <label class="form-check-label" for="eGrocery">
-                      데이트
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="DealShare">
-                      비즈니스미팅
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="Dmart">
-                      기념일
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="Blinkit">
-                      단체회식
-                    </label>
-                  </div>
-                  <!-- form check -->
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      가족모임
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      뷰맛집
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      상견례
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      조용한
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      모던한
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      전통적인
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      트렌디한
-                    </label>
-                  </div>
-
-                  <div class="form-check mb-2">
-                    <!-- input -->
-                    <input class="form-check-input" type="checkbox" value="" >
-                    <label class="form-check-label" for="BigBasket">
-                      활기찬
-                    </label>
-                  </div>
-                </div>
-
-
-
-                <!-- rating -->
-                <div class="mb-8">
-
-                  <h5 class="mb-3">평점</h5>
-                  <div>
-                    <!-- form check -->
-                    <div class="form-check mb-2">
-                      <!-- input -->
-                      <input class="form-check-input" type="checkbox" value="" id="ratingFive">
-                      <label class="form-check-label" for="ratingFive">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                      </label>
-                    </div>
-                    <!-- form check -->
-                    <div class="form-check mb-2">
-                      <!-- input -->
-                      <input class="form-check-input" type="checkbox" value="" id="ratingFour" checked>
-                      <label class="form-check-label" for="ratingFour">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star text-warning"></i>
-                      </label>
-                    </div>
-
-                    <!-- form check -->
-                    <div class="form-check mb-2">
-                      <!-- input -->
-                      <input class="form-check-input" type="checkbox" value="" id="ratingThree">
-                      <label class="form-check-label" for="ratingThree">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star-fill text-warning "></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                      </label>
-                    </div>
-                    <!-- form check -->
-                    <div class="form-check mb-2">
-                      <!-- input -->
-                      <input class="form-check-input" type="checkbox" value="" id="ratingTwo">
-                      <label class="form-check-label" for="ratingTwo">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                      </label>
-                    </div>
-                    <!-- form check -->
-                    <div class="form-check mb-2">
-                      <!-- input -->
-                      <input class="form-check-input" type="checkbox" value="" id="ratingOne">
-                      <label class="form-check-label" for="ratingOne">
-                        <i class="bi bi-star-fill text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
-                        <i class="bi bi-star text-warning"></i>
+                  <div class="mb-8">
+                    <h5 class="mb-3">포함 음식</h5>
+                    <div class="form-check mb-2" th:each="containFoodType : ${containFoodTypes}">
+                      <input class="form-check-input" type="checkbox" th:field="*{containFoodTypes}" th:value="${containFoodType.name()}" >
+                      <label th:for="${#ids.prev('containFoodTypes')}" th:text="${containFoodType.description}" class="form-check-label">
+                        유제품
                       </label>
                     </div>
                   </div>
-                </div>
+
+
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">위치</h5>
+                      <!-- form check -->
+                  </div>
+
+
+                  <div class="mb-8">
+                    <!-- price -->
+                    <h5 class="mb-3">평균 가격대</h5>
+                    <div>
+                      <!-- range -->
+                      <div id="priceRange" class="mb-3"></div>
+                      <small class="text-muted">평균 가격대:</small> <span id="priceRange-value" class="small"></span>
+                      <!-- Hidden inputs to store minimum and maximum values -->
+                      <input type="hidden" th:field="*{startPrice}" th:value="*{startPrice}">
+                      <input type="hidden" th:field="*{endPrice}" th:value="*{endPrice}">
+
+                    </div>
+                  </div>
+
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">영업 중 여부</h5>
+                    <!-- form check -->
+                    <div class="form-check mb-2">
+                      <!-- input , boolean 필드는 자동 true & false가 됨 value를 오히려 지정하면 안됨 ㅇㅇ-->
+                      <input class="form-check-input" type="checkbox" th:field="*{isOpen}" >
+                      <label class="form-check-label" th:text="|영업 중|" th:for="${#ids.prev('isOpen')}">영업 중</label>
+                    </div>
+                  </div>
+
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">주차 가능 여부</h5>
+                    <!-- form check -->
+                    <div class="form-check mb-2">
+                      <!-- input -->
+                      <input class="form-check-input" type="checkbox" th:field="*{canPark}"  checked>
+                      <label class="form-check-label" th:for="${#ids.prev('canPark')}" th:text="|주차 가능|">
+                        주차 가능
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">식당 분류</h5>
+                    <!-- form check -->
+                    <div class="form-check mb-2" th:each="restaurantType : ${restaurantTypes}">
+                      <!-- input -->
+                      <input class="form-check-input" type="checkbox" th:field="*{restaurantTypes}" th:value="${restaurantType.name()}"  checked>
+                      <label class="form-check-label" th:for="${#ids.prev('restaurantTypes')}" th:text="${restaurantType.description}">
+                        한식
+                      </label>
+                    </div>
+                  </div>
+
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">제공하는 서비스</h5>
+                    <!-- form check -->
+                    <div class="form-check mb-2" th:each="provideServiceType : ${provideServiceTypes}">
+                      <!-- input -->
+                      <input class="form-check-input" type="checkbox" th:field="*{provideServiceTypes}" th:value="${provideServiceType.name()}"  checked>
+                      <label class="form-check-label" th:for="${#ids.prev('provideServiceTypes')}" th:text="${provideServiceType.description}">
+                        콜키지 가능
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="mb-8">
+                    <h5 class="mb-3">분위기</h5>
+                    <!-- form check -->
+                    <div class="form-check mb-2" th:each="moodType : ${moodTypes}">
+                      <!-- input -->
+                      <input class="form-check-input" type="checkbox" th:field="*{moodTypes}" th:value="${moodType.name()}"  checked>
+                      <label class="form-check-label" th:for="${#ids.prev('moodTypes')}" th:text="${moodType.description}">
+                        콜키지 가능
+                      </label>
+                    </div>
+                  </div>
+                    <!-- enum은 DB와 키와 값 중 키로 서버 단에서 왔다갔다 하게 됨 , 값은 그저 사용자에게 보여주는 용도 ! -->
+
+
+                    <!-- rating -->
+                    <div class="mb-8">
+                      <h5 class="mb-3">평균 별점</h5>
+                      <div>
+                        <!-- form check -->
+                        <div class="form-check mb-2" th:each="rate : ${#numbers.sequence(1, 5)}"> <!-- 별점부터 해결하면 됨 , 별점 1,2,3,4,5 넘겨줄까 이것도 , 중첩 for문으로 별찍기문제마냥 해결-->
+                          <!-- input -->
+                          <input class="form-check-input" type="checkbox" th:field="*{rates}" th:value="${rate}"> <!-- 어차피 @ModelAttriubte에서 타입 컨버전 통해 String 으로 넘겨도 자동으로 Integer로 변환해서 할당해줌 ㅇㅇ-->
+                          <label class="form-check-label" th:for="${#ids.prev('rates')}">
+                            <!-- label 안에서 별 렌더링 -->
+                            <span th:each="filled : ${#numbers.sequence(1, rate)}">
+                              <i class="bi bi-star-fill text-warning"></i>
+                            </span>
+                            <span th:each="empty : ${#numbers.sequence(1, 5 - rate)}" th:if="${rate < 5}">
+                                <i class="bi bi-star text-warning"></i>
+                            </span>
+
+                          </label>
+                        </div>
+
+                      </div>
+                    </div>
+
+
+                  <button class="btn btn-outline-primary" th:text="검색하기" type="submit"></button>
+
+                </form>
+
+
               </div>
               <!--실제 필터링 영역 끝-->
             </div>
@@ -478,36 +215,16 @@
 
               <!-- icon -->
               <div class="d-md-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center justify-content-between">
+
+
+                <div class="d-flex mt-2 mt-lg-0 mb-3">
 
                   <div class="ms-2 d-lg-none">
-                    <a class="btn btn-outline-gray-400 text-muted" data-bs-toggle="offcanvas" href="#offcanvasCategory" role="button" aria-controls="offcanvasCategory"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                                                                                                                                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                                                                                                                                             class="feather feather-filter me-2">
-                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-                    </svg> 필터</a>
+                    <a class="btn btn-outline-gray-400 text-muted" data-bs-toggle="offcanvas" href="#offcanvasCategory" role="button" aria-controls="offcanvasCategory">
+                      <img src="/assets/images/filter_icon.png" th:src="@{/assets/images/filter_icon.png}" style="width:1rem;height:1rem">
+                    </a>
                   </div>
-                </div>
 
-                <div class="d-flex mt-2 mt-lg-0">
-                  <div class="me-2 flex-grow-1">
-                    <!-- select option -->
-                    <select class="form-select">
-                      <option selected>Show: 50</option>
-                      <option value="10">10</option>
-                      <option value="20">20</option>
-                      <option value="30">30</option>
-                    </select></div>
-                  <div>
-                    <!-- select option -->
-                    <select class="form-select">
-                      <option selected>Sort by: Featured</option>
-                      <option value="Low to High">Price: Low to High</option>
-                      <option value="High to Low"> Price: High to Low</option>
-                      <option value="Release Date"> Release Date</option>
-                      <option value="Avg. Rating"> Avg. Rating</option>
-
-                    </select></div>
 
                 </div>
 
@@ -522,7 +239,7 @@
             <div class="row g-4  row-cols-1 mt-2">
 
               <!--각 칸마다 URI 지정 시 제목 a 태그와 사진 카드 영역 URI 두 개 지정해줘야됨-->
-              <div class="col">
+              <div class="col" th:each="restaurant : ${restaurants}">
                 <!-- card -->
                 <div class="card card-product">
                   <!-- card body -->
@@ -530,18 +247,18 @@
                       <div class="col-md-8 col-12 flex-grow-1">
                         <!-- heading -->
                         <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/restaurants/1" th:href="@{/restaurants/1}" class="text-inherit text-decoration-none">음 이터리</a>
+                          <h2 class="fs-4"><a href="/restaurants/1" th:href="@{/restaurants/{id}(id = ${restaurant.id})}" th:text="${restaurant.name}" class="text-inherit text-decoration-none">음 이터리</a>
                             </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
+                            <span class="text-muted ms-1" th:each="restaurantType : ${restaurant.restaurantTypes}" th:text="${restaurantType}">양식</span><!--어차피 여기서는 QueryDSL 관심 없음 이미 다 할당해와서 리스트에 박아놨기 때문 ㅇㅇ-->
                         </div>
                         <div>
                           <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
+                          <span class="text-dark" th:text="${restaurant.businessStatus.description}">영업 중</span>
+                          <span class="text-muted small">&nbsp;・&nbsp;</span>
                           <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
+                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small><span class="text-muted small" th:text="|${restaurant.averageRating}(${restaurant.reviewCount})|">4.5(60)</span>
+                          <span class="text-muted small">&nbsp;・&nbsp;</span>
+                          <small class="text-danger"><i class="bi bi-heart-fill"></i></small> <span class="text-muted small" th:text="|${restaurant.likesCount}|">123</span>
                         </div>
 
                       </div>
@@ -549,72 +266,16 @@
                     <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
                       <!-- col -->
                       <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
+                        <div class="item" style="margin-left:0.1rem" th:each="image : ${restaurant.restaurantImages}">
+                          <a href="/restaurants/1" th:href="@{/restaurants/{id}(id = ${restaurant.id})}" class="text-decoration-none text-inherit">
                           <div class="mb-lg-4">
                             <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
+                              <img th:src="@{${image}}" style="width:30rem;height:22rem" class="mb-3">
                             </div>
                           </div>
                           </a>
                         </div>
 
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
                       </div>
 
                     <!-- card body 끝-->
@@ -623,998 +284,7 @@
                   </div>
                 </div>
 
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/restaurants/1" th:href="@{/restaurants/1}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
 
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
-
-              <div class="col">
-                <!-- card -->
-                <div class="card card-product">
-                  <!-- card body -->
-                  <div class="card-body">
-                      <div class="col-md-8 col-12 flex-grow-1">
-                        <!-- heading -->
-                        <div class="d-flex justify-content-start"> <!--가로로 컴포넌트들을 배치-->
-                          <h2 class="fs-4"><a href="/pages/shop-single.html" th:href="@{/pages/shop-single.html}" class="text-inherit text-decoration-none">음 이터리</a>
-                            </h2>
-                            <span class="text-muted">&nbsp;&nbsp;&nbsp;양식</span>
-                        </div>
-                        <div>
-                          <!-- 영업 중 , 브레이크타임 , 영업 종료 여부만 , 영업 시간은 상세에서 ㅇㅇ-->
-                          <span class="text-dark">영업 중</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <!-- rating -->
-                          <small class="text-warning"> <i class="bi bi-star-fill"></i></small> <span class="text-muted small">4.5(149)</span>
-                          <span class="text-muted small">&nbsp;•&nbsp;</span>
-                          <span>리뷰 999+</span>
-                        </div>
-
-                      </div>
-
-                    <!-- 가로 정렬이 필요한 부분에 row 하자 , align-items-center : 컴포넌트 중앙으로 배치-->
-                      <!-- col -->
-                      <div class="category-slider ">
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm0.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm1.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm2.jpeg"style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm3.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-
-
-                        <div class="item" style="margin-left:0.1rem">
-                          <a href="/restaurants/1" class="text-decoration-none text-inherit">
-                          <div class="mb-lg-4">
-                            <div class="py-8">
-                              <img src="/assets/images/restaurant/umm/umm4.jpeg" style="width:30rem;height:22rem" alt="Grocery Ecommerce Template" class="mb-3">
-                            </div>
-                          </div>
-                          </a>
-                        </div>
-                        <!--이미지 슬라이더 끝 -->
-                      </div>
-
-                    <!-- card body 끝-->
-                    </div>
-
-                  </div>
-                </div>
               </div>
             <!-- 식당 목록 끝-->
 
@@ -1876,6 +546,8 @@
       </div>
     </div>
   </div>
+
+
 </main>
 
 </html>
