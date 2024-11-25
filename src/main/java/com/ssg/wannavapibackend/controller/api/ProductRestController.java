@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/product")
+@RequestMapping("/api/v1/products")
 public class ProductRestController {
 
     private final ProductService productService;
 
-    @GetMapping("/list")
+    @GetMapping()
     public ResponseEntity<Map<String, Object>> getProductList() {
         List<ProductResponseDTO> products = productService.getProductList();
 

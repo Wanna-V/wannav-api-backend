@@ -1,8 +1,16 @@
 package com.ssg.wannavapibackend.service.serviceImpl;
 
+import com.ssg.wannavapibackend.common.ErrorCode;
+import com.ssg.wannavapibackend.domain.Cart;
 import com.ssg.wannavapibackend.domain.Product;
+import com.ssg.wannavapibackend.domain.User;
+import com.ssg.wannavapibackend.dto.request.CartItemQuantityUpdateDTO;
+import com.ssg.wannavapibackend.dto.request.CartRequestDTO;
 import com.ssg.wannavapibackend.dto.response.ProductResponseDTO;
+import com.ssg.wannavapibackend.exception.CustomException;
+import com.ssg.wannavapibackend.repository.CartRepository;
 import com.ssg.wannavapibackend.repository.ProductRepository;
+import com.ssg.wannavapibackend.repository.UserRepository;
 import com.ssg.wannavapibackend.service.ProductService;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,10 +44,13 @@ public class ProductServiceImpl implements ProductService {
 
     /**
      * 상품 상세 조회
+     *
      * @param productId → 상품 ID
      */
     @Transactional(readOnly = true)
     public Product getProduct(Long productId) {
-        return productRepository.findById(productId).orElseThrow(() -> new IllegalArgumentException("Invalid ID value: " + productId));
+        return productRepository.findById(productId)
+            .orElseThrow(() -> new CustomException(ErrorCode.PRODUCT_NOT_FOUND));
     }
+
 }

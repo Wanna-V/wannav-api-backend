@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ReservationRepository extends JpaRepository<Reservation, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Long>, ReservationCustomRepository {
     List<Reservation> findAllByUserId(Long userId);
 
     //예약이 없을 경우도 있으므로 LEFT JOIN 사용

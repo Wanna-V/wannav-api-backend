@@ -1,5 +1,6 @@
 package com.ssg.wannavapibackend.dto.response;
 
+import com.ssg.wannavapibackend.common.Grade;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +14,7 @@ public class MyPageResponseDTO {
 
     private String username;
     private Integer point;
-    private String grade;
+    private Grade grade;
     private Integer reviewCount;
     private Integer couponCount;
 }

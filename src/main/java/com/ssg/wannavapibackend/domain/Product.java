@@ -1,6 +1,8 @@
 package com.ssg.wannavapibackend.domain;
 
 import com.ssg.wannavapibackend.common.Category;
+import com.ssg.wannavapibackend.common.ErrorCode;
+import com.ssg.wannavapibackend.exception.CustomException;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,34 +27,33 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(nullable = false, columnDefinition = "json")
-    @JdbcTypeCode(SqlTypes.JSON)
-    private List<String> image;
+    @Column(nullable = false)
+    private String image;
 
     @Column(name = "cost_price", nullable = false)
-    private double costPrice;
+    private Double costPrice;
 
     @Column(name = "selling_price", nullable = false)
-    private double sellingPrice;
+    private Double sellingPrice;
 
     @Column(name = "discount_rate", nullable = false)
     @ColumnDefault("0")
-    private int discountRate;
+    private Integer discountRate;
 
     @Column(name = "final_price", nullable = false)
-    private double finalPrice;
+    private Double finalPrice;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Category category;
 
     @Column(nullable = false)
-    private int stock;
+    private Integer stock;
 
     @Column(nullable = false, columnDefinition = "json")
     @JdbcTypeCode(SqlTypes.JSON)
@@ -60,7 +61,7 @@ public class Product {
 
     @Column(name = "is_active", nullable = false)
     @ColumnDefault("0")
-    private boolean isActive;
+    private Boolean isActive;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "created_by_id", nullable = false)
@@ -79,4 +80,14 @@ public class Product {
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:MM:SS")
     private LocalDateTime updatedAt;
+
+    public void decrease(int quantity) {
+        if (this.stock - quantity < 0) {
+            throw new CustomException(ErrorCode.INSUFFICIENT_STOCK);
+        }
+
+        this.stock -= quantity;
+        this.updatedAt = LocalDateTime.now();
+    }
+
 }

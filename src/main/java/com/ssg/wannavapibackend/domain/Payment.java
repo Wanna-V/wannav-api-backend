@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,12 +18,15 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable = false)
     private User user;
 
-    @Column(name = "payment_number", nullable = false)
-    private Long paymentNumber;
+    @Column(name = "payment_key")
+    private String paymentKey;
+
+    @Column(name = "order_id", nullable = false)
+    private String orderId;
 
     @Column(name = "actual_price", nullable = false)
     private Double actualPrice;
@@ -40,7 +44,7 @@ public class Payment {
     private Double finalDiscountAmount;
 
     @Column(name = "coupon_code")
-    private Double couponCode;
+    private Long couponCode;
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -48,11 +52,26 @@ public class Payment {
     @Embedded
     private Address address;
 
+    @Column(name = "note")
+    private String note;
+
+    @Column(name= "cancel_reason")
+    private String cancelReason;
+
+    @Column(name = "cancel_amount")
+    private Double cancelAmount;
+
     @Column(name = "created_at", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
+    @Column(name = "approved_at")
+    private String approvedAt;
+
     @Column(name = "canceled_at")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime canceledAt;
+
+    @OneToMany(mappedBy = "payment", fetch = FetchType.LAZY)
+    private List<PaymentItem> paymentItems;
 }

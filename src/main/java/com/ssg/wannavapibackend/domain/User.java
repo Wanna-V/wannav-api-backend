@@ -1,17 +1,10 @@
 package com.ssg.wannavapibackend.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -61,9 +54,20 @@ public class User {
 
     @Column(name="updated_at")
     @Temporal(TemporalType.TIMESTAMP)
-    private LocalDateTime updateAt;
+    private LocalDateTime updatedAt;
 
     @Column(name="unregistered_at")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime unregisteredAt;
+
+//    @OneToMany(mappedBy = "user")
+//    private List<UserCoupon> userCoupons;
+//
+//    @OneToMany(mappedBy = "user")
+//    private List<Reservation> reservations;
+
+    public void updatePoint(long point) {
+        this.point = point;
+        this.updatedAt = LocalDateTime.now();
+    }
 }

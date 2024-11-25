@@ -4,7 +4,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout}"
 >
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="/css/product/products.css">
@@ -24,7 +23,7 @@
   <div class="product-grid" id="product-grid">
     <div class="product-item" th:each="product : ${products}">
       <a th:href="@{/products/{id}(id=${product.id})}">
-        <img th:src="@{${product.image[0]}}" alt="Product image"/>
+        <img th:src="@{${product.image}}" alt="Product image"/>
         <div class="product-price-container">
           <span class="product-discount-rate" th:text="${product.discountRate} + '%'"></span>
           <div class="price-container">

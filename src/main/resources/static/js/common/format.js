@@ -18,3 +18,25 @@ export function truncateText(text) {
   }
   return text;
 }
+
+/**
+ * 가격을 한국 원화(KRW) 형식으로 포맷팅하여 요소에 적용
+ */
+export function formatPriceElements() {
+  const priceElements = document.querySelectorAll(".price");
+  priceElements.forEach(function (priceElement) {
+    const price = parseInt(priceElement.getAttribute("data-price"));
+    priceElement.textContent = formatPrice(price);
+  });
+}
+
+/**
+ * 상품명을 말줄임표 형식으로 포맷팅하여 요소에 적용
+ */
+export function formatNameElements() {
+  const nameElements = document.querySelectorAll(".name");
+  nameElements.forEach(function (nameElement) {
+    const name = nameElement.getAttribute("data-name");
+    nameElement.textContent = truncateText(name);
+  });
+}

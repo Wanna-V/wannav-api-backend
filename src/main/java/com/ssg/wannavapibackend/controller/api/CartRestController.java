@@ -1,106 +1,86 @@
 package com.ssg.wannavapibackend.controller.api;
 
+import com.ssg.wannavapibackend.dto.request.CartItemQuantityUpdateDTO;
+import com.ssg.wannavapibackend.dto.request.CartRequestDTO;
+import com.ssg.wannavapibackend.dto.response.CartResponseDTO;
+import com.ssg.wannavapibackend.service.CartService;
+import jakarta.validation.Valid;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Log4j2
 @RestController
-@RequestMapping("/api/cart")
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/cart")
 public class CartRestController {
 
+    private final CartService cartService;
+    final Long userId = 1L; // Security 적용 후 삭제 예정
+
+    @PostMapping()
+    public ResponseEntity<Map<String, String>> addCartItem(
+        @RequestBody @Valid CartRequestDTO requestDTO) {
+        cartService.addCartItem(userId, requestDTO);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @GetMapping("/list")
-    public String getCartList() {
-        return """
-            {
-                "status": "success",
-                "data": {
-                    "dataList": [
-                        {
-                            "id": 30,
-                            "productId": 30,
-                            "quantity": 6,
-                            "productName": "풀무원 식물성 유니 짜장면 2인분, 620g, 1개 2인분, 620g, 1개 풀무원 식물성 유니 짜장면 2인분, 620g, 1개 2인분, 620g, 1개",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 18700.0
-                        },
-                        {
-                            "id": 29,
-                            "productId": 45,
-                            "quantity": 3,
-                            "productName": "아보카도 샐러드 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 16200.0
-                        },
-                        {
-                            "id": 28,
-                            "productId": 51,
-                            "quantity": 9,
-                            "productName": "토마토소스파스타밀키트토마토소스파스타밀키트토마토소스파스타밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 12000.0
-                        },
-                        {
-                            "id": 27,
-                            "productId": 39,
-                            "quantity": 4,
-                            "productName": "참치죽 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 7650.0
-                        },
-                        {
-                            "id": 26,
-                            "productId": 12,
-                            "quantity": 1,
-                            "productName": "냉면 밀키트 냉면 밀키트 냉면 밀키트 냉면 밀키트 냉면 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 9500.0
-                        },
-                        {
-                            "id": 25,
-                            "productId": 52,
-                            "quantity": 7,
-                            "productName": "사골국 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 14400.0
-                        },
-                        {
-                            "id": 24,
-                            "productId": 52,
-                            "quantity": 7,
-                            "productName": "비빔밥 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 13000.0
-                        },
-                        {
-                            "id": 23,
-                            "productId": 37,
-                            "quantity": 3,
-                            "productName": "순두부찌개 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 7650.0
-                        },
-                        {
-                            "id": 22,
-                            "productId": 33,
-                            "quantity": 1,
-                            "productName": "닭가슴살 샐러드 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 13500.0
-                        },
-                        {
-                            "id": 21,
-                            "productId": 23,
-                            "quantity": 1,
-                            "productName": "카레 밀키트",
-                            "productImage": "https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/950531282389413-5a75db2d-00d6-4e81-8caf-9a0085b15921.jpg",
-                            "productFinalPrice": 9600.0
-                        }
-                    ]
-                }
-            }
-            """;
+    public ResponseEntity<Map<String, Object>> getCartItemList() {
+
+        List<CartResponseDTO> cartItems = cartService.getCartItemList(userId);
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("data", cartItems);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PatchMapping()
+    public ResponseEntity<Map<String, String>> updateCartItemQuantity(@RequestBody @Valid
+    CartItemQuantityUpdateDTO updateDTO) {
+        cartService.updateCartItemQuantity(updateDTO);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{cartId}")
+    public ResponseEntity<Map<String, String>> deleteCartItem(@PathVariable Long cartId) {
+        cartService.deleteCartItem(cartId);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping()
+    public ResponseEntity<Map<String, String>> deleteCartItems(@RequestBody List<Long> cartIds) {
+        cartService.deleteCartItems(cartIds);
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

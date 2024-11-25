@@ -120,7 +120,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         return new ReservationSaveResponseDTO(
                 reservationComplete.getId(),
-                reservationComplete.getRestaurant().getIsPanelty(),
+                reservationComplete.getRestaurant().getIsPenalty(),
                 reservationRepository.existsById(reservation.getId()));
     }
 
