@@ -5,7 +5,7 @@ import com.ssg.wannavapibackend.domain.BusinessDay;
 import com.ssg.wannavapibackend.domain.Food;
 import com.ssg.wannavapibackend.domain.Restaurant;
 import com.ssg.wannavapibackend.dto.RestaurantSearchCond;
-import com.ssg.wannavapibackend.repository.RestaurantRepository;
+import com.ssg.wannavapibackend.repository.repositoryImpl.RestaurantRepository;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
