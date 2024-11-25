@@ -38,6 +38,8 @@ public class Restaurant {
   private Long id;
 
   private String name;
+
+  @Column(name = "business_num")
   private String businessNum;
 
   private String contact; //연락처
@@ -60,17 +62,24 @@ public class Restaurant {
   private String image;
   private String description; //설명
 
-
+  @Column(name = "created_at")
   private LocalDate createdAt; //생성일
+
+  @Column(name = "updated_at")
   private LocalDate updatedAt; //수정일
 
+  @Column(name = "reservation_time_gap")
   private String reservationTimeGap;
+
+  @Column(name = "is_penalty")
   private Boolean isPenalty;
 
 
   @Enumerated(EnumType.STRING)
+  @Column(name = "business_status")
   private BusinessStatus businessStatus; //영업 상태 : 영업 중 , 영업 종료 , 브레이크타임
 
+  @Column(name = "can_park")
   private boolean canPark; //주차 가능 여부
 
 
@@ -98,27 +107,27 @@ public class Restaurant {
   // 기본적으로 cascade , orphanRemoval 걸려있음
 
   @ElementCollection
-  @CollectionTable(name = "contain_food_type", joinColumns = @JoinColumn(name = "restaurant_id"))
+  @CollectionTable(name = "ContainFoodType", joinColumns = @JoinColumn(name = "restaurant_id"))
   @Column(name = "contain_food_type")
   private Set<String> containFoodTypes = new HashSet<>();
 
 
   //여러 제공하는 서비스 종류들(단체석 이용 가능 , 무선 와이파이 존재 , 콜키지 가능 , ...) ProvideServiceType
   @ElementCollection
-  @CollectionTable(name = "provide_service_type", joinColumns = @JoinColumn(name = "restaurant_id"))
+  @CollectionTable(name = "ProvideServiceType", joinColumns = @JoinColumn(name = "restaurant_id"))
   @Column(name = "provide_service_type")
   private Set<String> provideServiceTypes = new HashSet<>();// enum
 
 
   //주로 파는 품목 카테고리(추후 단일 객체 고려)RestaurantType
   @ElementCollection
-  @CollectionTable(name = "restaurant_type", joinColumns = @JoinColumn(name = "restaurant_id"))
+  @CollectionTable(name = "RestaurantType", joinColumns = @JoinColumn(name = "restaurant_id"))
   @Column(name = "restaurant_type")
   private Set<String> restaurantTypes = new HashSet<>();
 
 
   @ElementCollection
-  @CollectionTable(name = "mood_type", joinColumns = @JoinColumn(name = "restaurant_id"))
+  @CollectionTable(name = "MoodType", joinColumns = @JoinColumn(name = "restaurant_id"))
   @Column(name = "mood_type")
   private Set<String> moodTypes = new HashSet<>();
 

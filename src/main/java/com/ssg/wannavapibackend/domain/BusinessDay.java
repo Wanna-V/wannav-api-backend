@@ -1,6 +1,7 @@
 package com.ssg.wannavapibackend.domain;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,23 +29,30 @@ public class BusinessDay {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  @Column(name = "day_of_week")
   private String dayOfWeek; //특정 요일에 대한 영업 시작 시간 ~ 라스트 오더 시간 배치할 것임
 
-  @DateTimeFormat(pattern = "HH:mm:ss" , iso = ISO.TIME)
+  @DateTimeFormat(pattern = "HH:mm:ss", iso = ISO.TIME)
+  @Column(name = "open_time")
   private LocalTime openTime; //영업 시작 시간
 
   @DateTimeFormat(pattern = "HH:mm:ss" , iso = ISO.TIME)
+  @Column(name = "close_time")
   private LocalTime closeTime; //종료 시간
 
   @DateTimeFormat(pattern = "HH:mm:ss", iso = ISO.TIME)
+  @Column(name = "break_start_time")
   private LocalTime breakStartTime; //브레이크 댄스 타임 시작 시간
 
   @DateTimeFormat(pattern = "HH:mm:ss", iso = ISO.TIME)
+  @Column(name = "break_end_time")
   private LocalTime breakEndTime; //브레이크 댄스 타임 종료 시간
 
   @DateTimeFormat(pattern = "HH:mm:ss" , iso = ISO.TIME)
+  @Column(name = "last_order_time")
   private LocalTime lastOrderTime; //라스트 오더 시간
 
+  @Column(name = "is_day_off")
   private Boolean isDayOff; //문 닫는 날인지 , 이때는 전부 null 값임
 
   @ManyToOne(fetch = FetchType.LAZY)
