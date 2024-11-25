@@ -23,22 +23,11 @@ public class ReservationRestController {
 
     @GetMapping("/date")
     public ReservationDateResponseDTO getReservationTime(@ModelAttribute("reservationRequestDTO") ReservationRequestDTO reservationRequestDTO) {
-        log.info("안녕 난 레스트컨트롤러");
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getRestaurantId());
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getSelectDate());
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getSelectTime());
-
         return reservationService.getReservationTime(reservationRequestDTO);
     }
 
     @GetMapping("/time")
     public ReservationDateResponseDTO getReservationGuest(@ModelAttribute("reservationRequestDTO") ReservationRequestDTO reservationRequestDTO) {
-        log.info("안녕 난 레스트컨트롤러2");
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getRestaurantId());
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getSelectDate());
-        log.info("안녕 난 레스트컨트롤러" + reservationRequestDTO.getSelectTime());
-
-
         return reservationService.getReservationTime(reservationRequestDTO);
     }
 
@@ -48,8 +37,6 @@ public class ReservationRestController {
 
         try {
             ReservationSaveResponseDTO reservation = reservationService.saveReservation(reservationRequestDTO);
-
-            log.info("여기도 왔어");
 
             if (!reservation.getIsPenalty() && reservation.getIsSave()) {
                 response.put("message", "예약이 성공적으로 완료되었습니다.");

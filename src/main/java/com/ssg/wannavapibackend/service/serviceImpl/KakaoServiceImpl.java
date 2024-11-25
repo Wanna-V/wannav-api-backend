@@ -30,12 +30,9 @@ public class KakaoServiceImpl implements KakaoService {
     private final UserRepository userRepository;
     private final KakaoConfig kakaoConfig;
 
-    private final static String KAKAO_AUTH_URI = "https://kauth.kakao.com";
-    private final static String KAKAO_API_URI = "https://kapi.kakao.com";
-
     // 카카오 로그인 URL 반환
     public String getKakaoLogin() {
-        return KAKAO_AUTH_URI + "/oauth/authorize"
+        return kakaoConfig.getAuthUri() + "/oauth/authorize"
                 + "?client_id=" + kakaoConfig.getClientId()
                 + "&redirect_uri=" + kakaoConfig.getRedirectUri()
                 + "&response_type=code";
@@ -65,7 +62,7 @@ public class KakaoServiceImpl implements KakaoService {
         HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(params, headers);
 
         ResponseEntity<String> response = restTemplate.exchange(
-                KAKAO_AUTH_URI + "/oauth/token",
+                kakaoConfig.getAuthUri() + "/oauth/token",
                 HttpMethod.POST,
                 httpEntity,
                 String.class
@@ -87,7 +84,7 @@ public class KakaoServiceImpl implements KakaoService {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<MultiValueMap<String, String>> httpEntity = new HttpEntity<>(headers);
         ResponseEntity<String> response = restTemplate.exchange(
-                KAKAO_API_URI + "/v2/user/me",
+                kakaoConfig.getApiUri() + "/v2/user/me",
                 HttpMethod.GET,
                 httpEntity,
                 String.class
@@ -108,16 +105,11 @@ public class KakaoServiceImpl implements KakaoService {
         if(user == null){
             user = new User(null, nickName, profileImage, email, null, null, null, uniqueCode(), 0L, true, false, LocalDateTime.now(), null, null);
             User userInfo = userRepository.save(user);
-            return new KakaoResponseDTO(userInfo.getId(), userInfo.getUsername(), userInfo.getEmail());
+            return new KakaoResponseDTO(userInfo.getId(), userInfo.getEmail(), userInfo.getUsername());
         }
 
         else
-            return new KakaoResponseDTO(user.getId(), user.getUsername(), user.getEmail());
-
-        // 세션에 사용자 정보 저장
-//        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-//        HttpSession session = request.getSession();
-//        session.setAttribute("user", user);
+            return new KakaoResponseDTO(user.getId(), user.getEmail(), user.getUsername());
     }
 
     private String uniqueCode() {

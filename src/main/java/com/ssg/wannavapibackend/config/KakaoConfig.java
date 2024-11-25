@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Component
 public class KakaoConfig {
+
     @Value("${kakao.client-id}")
     private String clientId;
 
@@ -15,4 +16,10 @@ public class KakaoConfig {
 
     @Value("${kakao.redirect-uri}")
     private String redirectUri;
+
+    @Value("${kakao.auth-uri}")
+    private String authUri;
+
+    @Value("${kakao.api-uri}")
+    private String apiUri;
 }
