@@ -15,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "review")
 public class Review {
 
     @Id
@@ -35,14 +34,18 @@ public class Review {
     private String image;
 
     @Temporal(TemporalType.DATE)
+    @JoinColumn(name = "visit_date")
     private LocalDate visitDate;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JoinColumn(name = "created_at")
     private LocalDateTime createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @JoinColumn(name = "updated_at")
     private LocalDateTime updatedAt;
 
+    @JoinColumn(name = "is_active")
     private Boolean isActive;
     private String note;
 

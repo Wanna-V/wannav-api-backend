@@ -66,13 +66,6 @@ public class Restaurant {
   private String image;
   private String description; //설명
 
-
-
-  private LocalDate createdAt; //생성일
-  private LocalDate updatedAt; //수정일
-
-  private String reservationTimeGap;
-
   @Column(name = "created_at")
   private LocalDate createdAt; //생성일
 
@@ -88,10 +81,6 @@ public class Restaurant {
 
 
   @Enumerated(EnumType.STRING)
-  private BusinessStatus businessStatus; //영업 상태 : 영업 중 , 영업 종료 , 브레이크타임
-
-
-  @Column(name = "business_status")
   private BusinessStatus businessStatus; //영업 상태 : 영업 중 , 영업 종료 , 브레이크타임
 
   @Column(name = "can_park")

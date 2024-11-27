@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class MyPageResponseDTO {
 
     private String username;
-    private Integer point;
+    private Long point;
     private Grade grade;
     private Integer reviewCount;
     private Integer couponCount;
