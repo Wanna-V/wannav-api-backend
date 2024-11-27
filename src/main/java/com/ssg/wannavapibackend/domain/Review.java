@@ -34,21 +34,29 @@ public class Review {
     private String image;
 
     @Temporal(TemporalType.DATE)
-    @JoinColumn(name = "visit_date")
+    @Column(name = "visit_date")
     private LocalDate visitDate;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @JoinColumn(name = "created_at")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @JoinColumn(name = "updated_at")
+    @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @JoinColumn(name = "is_active")
+    @Column(name = "is_active")
     private Boolean isActive;
     private String note;
 
     @OneToMany(mappedBy = "review")
     private List<ReviewTag> reviewTags;
+
+    /**
+     * 연관관계 편의 메서드
+     */
+    public void addRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+        restaurant.getReviews().add(this);
+    }
 }

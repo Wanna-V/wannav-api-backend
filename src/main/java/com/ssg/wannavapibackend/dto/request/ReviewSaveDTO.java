@@ -28,9 +28,11 @@ public class ReviewSaveDTO {
     private String content;
 
     @Size(min = 1, max = 3, message = "사진은 1장 이상 3장 이하만 가능합니다.")
+    @Builder.Default
     private List<MultipartFile> files = new ArrayList<>();
 
     @Size(min = 1, max = 5, message = "태그를 1개 이상 5개 이하로 선택해주세요.")
+    @Builder.Default
     private List<String> tagNames = new ArrayList<>();
 
     private Restaurant restaurant;
