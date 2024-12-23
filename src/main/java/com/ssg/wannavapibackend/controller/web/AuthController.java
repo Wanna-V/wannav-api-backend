@@ -39,11 +39,11 @@ public class AuthController {
         Long userId = kakaoResponseDTO.getId();
         Map<String, Object> dataMap = kakaoResponseDTO.getDataMap();
 
-        String accessToken = jwtUtil.createToken(dataMap, 60 * 60 * 3);
-        String refreshToken = jwtUtil.createToken(Map.of("mid", userId), 60 * 60 * 24 * 3);
+        String accessToken = jwtUtil.createToken(dataMap, 60);
+        String refreshToken = jwtUtil.createToken(Map.of("mid", userId), 60 * 3);
 
         Cookie accessTokenCookie = new Cookie("accessToken", accessToken);
-        accessTokenCookie.setMaxAge(60*60*3);
+        accessTokenCookie.setMaxAge(60);
         accessTokenCookie.setHttpOnly(true);
 //        accessTokenCookie.setSecure(true); // https 가능 (도메인)
         accessTokenCookie.setPath("/");
@@ -51,7 +51,7 @@ public class AuthController {
         response.addCookie(accessTokenCookie);
 
         Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
-        refreshTokenCookie.setMaxAge(60 * 60 * 24 * 3);
+        refreshTokenCookie.setMaxAge(60 * 3);
         refreshTokenCookie.setHttpOnly(true);
 //        refreshTokenCookie.setSecure(true); // https 가능 (도메인)
         refreshTokenCookie.setPath("/");

@@ -8,6 +8,8 @@ public interface KakaoService {
 
     String getKakaoLogin();
 
+    String getKakaoLogout();
+
     KakaoResponseDTO getKakaoInfo(String code) throws JsonProcessingException;
 
     String getAccessToken(String code) throws JsonProcessingException;

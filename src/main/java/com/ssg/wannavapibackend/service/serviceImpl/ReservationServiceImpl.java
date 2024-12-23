@@ -83,7 +83,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public ReservationPaymentResponseDTO getReservationPayment(ReservationRequestDTO reservationRequestDTO) {
 
-        if(reservationRepository.existsByMyReservaion(jwtUtil.getUserId(), reservationRequestDTO.getRestaurantId(), reservationRequestDTO.getSelectDate()))
+        if(reservationRepository.existsByMyReservaion(28L, reservationRequestDTO.getRestaurantId(), reservationRequestDTO.getSelectDate()))
             throw new RuntimeException("하루에 한 번만 예약이 가능합니다!");
 
         Restaurant restaurant = restaurantRepository.findById(reservationRequestDTO.getRestaurantId()).orElseThrow(() -> new IllegalArgumentException("Invalid ID value: "));
@@ -98,8 +98,8 @@ public class ReservationServiceImpl implements ReservationService {
         String amPm = dateTime.getHour() < 12 ? "오전" : "오후";
 
         return ReservationPaymentResponseDTO.builder()
-                .reservationId(jwtUtil.getUserId())
-                .userId(jwtUtil.getUserId())
+                .reservationId(28L)
+                .userId(28L)
                 .restaurantId(reservationRequestDTO.getRestaurantId())
                 .restaurantName(restaurant.getName())
                 .roadAddress(restaurant.getAddress().getRoadAddress())
@@ -122,7 +122,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Restaurant restaurant = restaurantRepository.findById(reservationRequestDTO.getRestaurantId()).orElseThrow(() -> new IllegalArgumentException("식당이 없습니다."));
 
-        User user = userRepository.findById(jwtUtil.getUserId()).orElseThrow(() -> new IllegalArgumentException("유저가 없습니다."));
+        User user = userRepository.findById(28L).orElseThrow(() -> new IllegalArgumentException("유저가 없습니다."));
 
         if (reservationRepository.existsByMyReservaion(user.getId(), reservationRequestDTO.getRestaurantId(), reservationRequestDTO.getSelectDate()))
             throw new IllegalArgumentException("당일 예약은 한 번만 가능합니다.");

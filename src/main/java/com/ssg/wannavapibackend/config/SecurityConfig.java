@@ -31,7 +31,6 @@ public class SecurityConfig {
     private void setJwtCheckFilter(JWTCheckFilter jwtCheckFilter) {
         this.jwtCheckFilter = jwtCheckFilter;
     }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 

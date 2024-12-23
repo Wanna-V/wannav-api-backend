@@ -75,11 +75,9 @@
 
     <!--로그아웃-->
     <section class="mt-2">
-        <div class="list-group" style="border-radius: 0.5%;">
-            <form method="get" th:action="@{/auth/logout}" style="display: inline">
-                <button type="submit" class="list-group-item list-group-item-action fw-bold text-danger" style="font-size: 17px">로그아웃</button>
-            </form>
-        </div>
+      <div class="list-group" style="border-radius: 0.5%;">
+        <a th:href="${location}" style="text-decoration: none;"><button type="submit" class="list-group-item list-group-item-action fw-bold text-danger" style="font-size: 17px">로그아웃</button></a>
+      </div>
     </section>
 
       <!--하단 고정 버튼-->

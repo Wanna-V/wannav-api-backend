@@ -93,7 +93,7 @@ public class ReviewController {
             model.addAttribute("tagsAll", tagService.findTagsForReview());
             return "review/review-write";
         }
-        reviewService.saveReview(jwtUtil.getUserId(), reviewSaveDTO, reviewSaveDTO.getRestaurant(), reviewSaveDTO.getVisitDate());
+        reviewService.saveReview(28L, reviewSaveDTO, reviewSaveDTO.getRestaurant(), reviewSaveDTO.getVisitDate());
         redirectAttributes.addFlashAttribute("alertMessage", "작성 완료되었습니다.");
         return "redirect:/reviews";
     }

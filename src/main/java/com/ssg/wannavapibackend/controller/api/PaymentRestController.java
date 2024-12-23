@@ -44,7 +44,7 @@ public class PaymentRestController {
         PaymentConfirmResponseDTO responseDTO;
 
         if(requestDTO.getPaymentItemRequestDTO().getRestaurantId() == null)
-            responseDTO = paymentService.sendRequest(jwtUtil.getUserId(), requestDTO);
+            responseDTO = paymentService.sendRequest(28L, requestDTO);
         else
             responseDTO = paymentService.sendRequestReservationPayment(requestDTO);
 

@@ -17,7 +17,7 @@ import java.util.Set;
 @Getter
 @Setter(AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(exclude = {"foods", "businessDays", "reviews", "likes"})
+@ToString(exclude = {"foods", "businessDays", "reviews", "likes", "seats"})
 public class Restaurant {
 
   @Id
@@ -59,6 +59,7 @@ public class Restaurant {
   private String description; //설명
 
   @OneToMany(mappedBy = "restaurant")
+  @JsonIgnore
   private List<Seat> seats = new ArrayList<>();
 
   @Column(name = "created_at")

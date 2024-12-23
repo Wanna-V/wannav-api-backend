@@ -22,4 +22,13 @@ public class KakaoConfig {
 
     @Value("${kakao.api-uri}")
     private String apiUri;
+
+    @Value("${kakao.admin-key}")
+    private String adminKey;
+
+    @Value("${kakao.logout-url}")
+    private String logoutUrl;
+
+    @Value("${kakao.redirect-logout-url}")
+    private String redirectLogoutUrl;
 }
