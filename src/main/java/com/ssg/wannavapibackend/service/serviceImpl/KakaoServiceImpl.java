@@ -39,6 +39,13 @@ public class KakaoServiceImpl implements KakaoService {
                 + "&response_type=code";
     }
 
+    @Override
+    public String getKakaoLogout() {
+        return kakaoConfig.getLogoutUrl()
+                + "?client_id=" + kakaoConfig.getClientId()
+                + "&logout_redirect_uri=" + kakaoConfig.getRedirectLogoutUrl();
+    }
+
     // 카카오에서 사용자 정보 받아오는 메서드
     public KakaoResponseDTO getKakaoInfo(String code) throws JsonProcessingException {
         String accessToken = getAccessToken(code);
